@@ -26,7 +26,7 @@ int main()
         std::cout << "error : init openvr." << std::endl;
     }
 
-    std::cout << "pos info : " << std::endl << std::endl;
+    std::cout << "vive track object info : " << std::endl << std::endl;
 
     vive_session.get_pos_info();
 

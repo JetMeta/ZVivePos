@@ -22,6 +22,9 @@ int JzlViveSession::init()
 
     if (vr_system)
     {
+		left_controller_idx = vr_system->GetTrackedDeviceIndexForControllerRole(vr::TrackedControllerRole_LeftHand);
+		right_controller_idx = vr_system->GetTrackedDeviceIndexForControllerRole(vr::TrackedControllerRole_RightHand);
+
         return 1;
     }
 
@@ -51,7 +54,7 @@ void JzlViveSession::get_pos_info()
             {
                 const vr::TrackedDeviceClass dev_class = vr_system->GetTrackedDeviceClass(i);
 
-                std::cout << "idx:" << idx++ << "\t" << "seq:" << i << "\t" << get_track_dev_name(dev_class) << std::endl;
+                std::cout << "idx:" << idx++ << "\t" << "seq:" << i << "\t" << get_track_dev_class(i,dev_class) << std::endl;
 
                 dump_vr_matrix(pose.mDeviceToAbsoluteTracking);
 
@@ -61,14 +64,31 @@ void JzlViveSession::get_pos_info()
     }
 }
 
-const char* JzlViveSession::get_track_dev_name(const vr::TrackedDeviceClass dev_class) const
+const char* JzlViveSession::get_track_dev_class(const int idx,const vr::TrackedDeviceClass dev_class) const
 {
     switch (dev_class)
     {
     case vr::TrackedDeviceClass::TrackedDeviceClass_HMD:
         return "HMD";
     case vr::TrackedDeviceClass_Controller:
-        return "Controller";
+	{
+		if (idx == left_controller_idx)
+		{
+			return "Left Controller";
+		}
+		else
+		{
+			if (idx == right_controller_idx)
+			{
+				return "Right Controller";
+			}
+			else
+			{
+				return "Controller";
+			}
+		}
+	}
+
     case vr::TrackedDeviceClass::TrackedDeviceClass_TrackingReference:
         return "TrackingReference";
     case vr::TrackedDeviceClass::TrackedDeviceClass_GenericTracker:

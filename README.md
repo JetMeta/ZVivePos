@@ -16,3 +16,4 @@
 ### [0.00.01] - 2017-11-01
 #### init
 - usage : show position info of vive track object.
+- add controller role info.

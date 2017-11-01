@@ -19,9 +19,11 @@ public:
 
 private:
     DISALLOW_COPY_AND_ASSIGN(JzlViveSession);
-    const char* get_track_dev_name(const vr::TrackedDeviceClass) const;
+    const char* get_track_dev_class(const int,const vr::TrackedDeviceClass) const;
     void dump_vr_matrix(vr::HmdMatrix34_t&)const;
 
 private:
     vr::IVRSystem* vr_system = nullptr;
+	int left_controller_idx = -1;
+	int right_controller_idx = -1;
 };
