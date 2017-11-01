@@ -50,6 +50,7 @@ void JzlViveSession::get_pos_info()
         for (vr::TrackedDeviceIndex_t i = 0; i < vr::k_unMaxTrackedDeviceCount; ++i)
         {
             vr::TrackedDevicePose_t pose = pose_array[i];
+
             if (pose.bPoseIsValid)
             {
                 const vr::TrackedDeviceClass dev_class = vr_system->GetTrackedDeviceClass(i);
@@ -74,13 +75,13 @@ const char* JzlViveSession::get_track_dev_class(const int idx,const vr::TrackedD
 	{
 		if (idx == left_controller_idx)
 		{
-			return "Left Controller";
+			return "Controller - Left";
 		}
 		else
 		{
 			if (idx == right_controller_idx)
 			{
-				return "Right Controller";
+				return "Controller - Right";
 			}
 			else
 			{
@@ -100,8 +101,9 @@ const char* JzlViveSession::get_track_dev_class(const int idx,const vr::TrackedD
 
 void JzlViveSession::dump_vr_matrix(vr::HmdMatrix34_t& m)const
 {
+	std::cout << std::setprecision(10);
     std::cout << "pos :" << std::endl;
-    std::cout << "\t" << m.m[0][3] << "\t" << m.m[1][3] << "\t" << m.m[2][3] << std::endl;
+    std::cout << "\t" <<  m.m[0][3] << "\t" << m.m[1][3] << "\t" << m.m[2][3] << std::endl;
 
     std::cout << "rot :" << std::endl;
     for (size_t i = 0; i < 3; ++i)
@@ -109,8 +111,10 @@ void JzlViveSession::dump_vr_matrix(vr::HmdMatrix34_t& m)const
         for (size_t j = 0; j < 3; ++j)
         {
             std::cout << "\t";
-            std::cout << m.m[i][j];
+			std::cout << m.m[i][j];
         }
         std::cout << std::endl;
     }
+
+	std::cout << std::defaultfloat;
 }
