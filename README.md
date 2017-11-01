@@ -5,7 +5,7 @@
 ## usage
 - show position info of vive track object.
 
-![alt text](jzl_vive_pos/jzl_vive_pos/doc/jzl_vive_pos.png)
+![alt text](jzl_vive_pos/jzl_vive_pos/jzl_vive_pos/doc/jzl_vive_pos.png)
 
 ## download
 
