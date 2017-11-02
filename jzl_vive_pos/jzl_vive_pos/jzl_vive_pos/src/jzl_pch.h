@@ -9,7 +9,9 @@
 #include <sdkddkver.h>
 
 #include <Windows.h>
+
 #include <tchar.h>
+#include <string>
 
 #include <stdio.h>
 #include <iostream>

@@ -12,6 +12,8 @@
 ![alt text](jzl_vive_pos/jzl_vive_pos/jzl_vive_pos/doc/jzl_vive_pos.png)
 
 ## changelog
+### [0.00.01] - 2017-11-02
+- add property info
 
 ### [0.00.01] - 2017-11-01
 #### init
